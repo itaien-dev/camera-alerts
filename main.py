@@ -5,7 +5,7 @@ import requests
 from email.header import decode_header
 
 EMAIL = "itaienbot@gmail.com"
-PASSWORD = "tmnw bcyi zewa trbw"
+PASSWORD = "tmnwbcyizewatrbw"
 BOT_TOKEN = "8716453924:AAFq4YDHxQlxHqakKbsA_SYyjyfkxSCrlCk"
 CHAT_ID = "409155694"
 CHECK_INTERVAL = 30
