@@ -38,7 +38,7 @@ def check_emails():
         mail.store(num, "+FLAGS", "\\Seen")
     mail.logout()
 
-rint("הסקריפט התחיל לרוץ", flush=True)  # ← שורה 41
+print("הסקריפט התחיל לרוץ", flush=True)  # ← שורה 41
 while True:
     try:
         print("בודק מיילים...", flush=True)  # ← אחרי try:
