@@ -4,10 +4,10 @@ import time
 import requests
 from email.header import decode_header
 
-EMAIL = "your@gmail.com"
-PASSWORD = "your-app-password"
-BOT_TOKEN = "your-telegram-bot-token"
-CHAT_ID = "your-chat-id"
+EMAIL = "itaienbot@gmail.com"
+PASSWORD = "tmnw bcyi zewa trbw"
+BOT_TOKEN = "8716453924:AAFq4YDHxQlxHqakKbsA_SYyjyfkxSCrlCk"
+CHAT_ID = "409155694"
 CHECK_INTERVAL = 30
 
 def send_telegram(message, photo=None):
