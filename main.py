@@ -9,6 +9,7 @@ PASSWORD = "tmnwbcyizewatrbw"
 BOT_TOKEN = "8716453924:AAFq4YDHxQlxHqakKbsA_SYyjyfkxSCrlCk"
 CHAT_ID = "409155694"
 CHECK_INTERVAL = 30
+send_telegram("טסט - הבוט עובד!")
 
 def send_telegram(message, photo=None):
     if photo:
