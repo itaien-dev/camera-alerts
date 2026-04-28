@@ -9,7 +9,6 @@ PASSWORD = "tmnwbcyizewatrbw"
 BOT_TOKEN = "8716453924:AAFq4YDHxQlxHqakKbsA_SYyjyfkxSCrlCk"
 CHAT_ID = "409155694"
 CHECK_INTERVAL = 30
-send_telegram("טסט - הבוט עובד!")
 
 def send_telegram(message, photo=None):
     if photo:
@@ -40,6 +39,7 @@ def check_emails():
     mail.logout()
 
 print("הסקריפט התחיל לרוץ", flush=True)  # ← שורה 41
+send_telegram("טסט - הבוט עובד!")
 while True:
     try:
         print("בודק מיילים...", flush=True)  # ← אחרי try:
