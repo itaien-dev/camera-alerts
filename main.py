@@ -7,7 +7,7 @@ from email.header import decode_header
 EMAIL = "itaienbot@gmail.com"
 PASSWORD = "tmnwbcyizewatrbw"
 BOT_TOKEN = "8716453924:AAFq4YDHxQlxHqakKbsA_SYyjyfkxSCrlCk"
-CHAT_ID = "409155694"
+CHAT_ID = "277410850"
 CHECK_INTERVAL = 30
 
 def send_telegram(message, photo=None):
