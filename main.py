@@ -1,0 +1,46 @@
+import imaplib
+import email
+import time
+import requests
+from email.header import decode_header
+
+EMAIL = "your@gmail.com"
+PASSWORD = "your-app-password"
+BOT_TOKEN = "your-telegram-bot-token"
+CHAT_ID = "your-chat-id"
+CHECK_INTERVAL = 30
+
+def send_telegram(message, photo=None):
+    if photo:
+        url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendPhoto"
+        requests.post(url, data={"chat_id": CHAT_ID, "caption": message}, files={"photo": ("img.jpg", photo)})
+    else:
+        url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+        requests.post(url, json={"chat_id": CHAT_ID, "text": message})
+
+def check_emails():
+    mail = imaplib.IMAP4_SSL("imap.gmail.com")
+    mail.login(EMAIL, PASSWORD)
+    mail.select("inbox")
+    _, msgs = mail.search(None, '(UNSEEN)')
+    for num in msgs[0].split():
+        _, data = mail.fetch(num, "(RFC822)")
+        msg = email.message_from_bytes(data[0][1])
+        subject = decode_header(msg["Subject"])[0][0]
+        if isinstance(subject, bytes):
+            subject = subject.decode()
+        photo = None
+        for part in msg.walk():
+            if part.get_content_type().startswith("image/"):
+                photo = part.get_payload(decode=True)
+                break
+        send_telegram(f"🚨 התראת מצלמה!\n{subject}", photo)
+        mail.store(num, "+FLAGS", "\\Seen")
+    mail.logout()
+
+while True:
+    try:
+        check_emails()
+    except Exception as e:
+        print(f"שגיאה: {e}")
+    time.sleep(CHECK_INTERVAL)
