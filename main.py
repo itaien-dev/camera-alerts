@@ -38,9 +38,12 @@ def check_emails():
         mail.store(num, "+FLAGS", "\\Seen")
     mail.logout()
 
+rint("הסקריפט התחיל לרוץ", flush=True)  # ← שורה 41
 while True:
     try:
+        print("בודק מיילים...", flush=True)  # ← אחרי try:
         check_emails()
+        print("בדיקה הסתיימה", flush=True)  # ← אחרי check_emails()
     except Exception as e:
-        print(f"שגיאה: {e}")
+        print(f"שגיאה: {e}", flush=True)
     time.sleep(CHECK_INTERVAL)
