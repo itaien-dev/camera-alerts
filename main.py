@@ -3,6 +3,7 @@ import email
 import time
 import requests
 from email.header import decode_header
+from datetime import datetime
 
 EMAIL = "itaienbot@gmail.com"
 PASSWORD = "tmnwbcyizewatrbw"
@@ -29,14 +30,16 @@ def check_emails():
         subject = decode_header(msg["Subject"])[0][0]
         if isinstance(subject, bytes):
             subject = subject.decode()
+        now = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
         photo = None
         for part in msg.walk():
             if part.get_content_type().startswith("image/"):
                 photo = part.get_payload(decode=True)
                 break
-        send_telegram(f"🚨 התראת מצלמה!\n{subject}", photo)
+        send_telegram(f"🚨 התראת מצלמה!\n📷 {subject}\n🕐 {now}", photo)
         mail.store(num, "+FLAGS", "\\Seen")
     mail.logout()
+
 
 print("הסקריפט התחיל לרוץ", flush=True)  # ← שורה 41
 while True:
