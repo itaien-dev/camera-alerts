@@ -39,7 +39,6 @@ def check_emails():
     mail.logout()
 
 print("הסקריפט התחיל לרוץ", flush=True)  # ← שורה 41
-send_telegram("טסט - הבוט עובד!")
 while True:
     try:
         print("בודק מיילים...", flush=True)  # ← אחרי try:
